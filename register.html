@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    function regex() {
+      var name = document.register.uname.value;
+      var password = document.register.password.value;
+      var email=document.register.mail.value;
+      var phone=document.register.phone.value;
+      var cnfrmpasswd=document.register.cpassword.value;
+      // Regex pattern to validate email addresses
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Regex pattern to validate passwords (at least 8 characters, at least one uppercase letter, one lowercase letter, and one number)
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+// Regex pattern to validate names (letters and spaces only, between 2 and 30 characters long)
+const nameRegex = /^[a-zA-Z\s]{2,30}$/;
+
+// Regex pattern to validate phone numbers (10 digits, optionally with parentheses and/or dashes)
+const phoneRegex = /^\(?([6|9]{1})\)?([0-9]{9})$/;
+// Usage example:
+ if (!nameRegex.test(name)) {
+  // Handle invalid name input
+  alert('Not a valid name')
+  return false;
+}
+else if (!emailRegex.test(email)) {
+  // Handle invalid email input
+  alert("Not a valid e-mail")
+  return false;
+}
+else if (!phoneRegex.test(phone)) {
+  // Handle invalid phone input
+  alert("Not a valid phone number")
+  return false;
+
+}
+
+else if (!passwordRegex.test(password)) {
+  // Handle invalid password input
+  alert('Not a valid password')
+  return false;
+}
+else if(password!=cnfrmpasswd){
+  alert(" password and confirm password are not same")
+  return false;
+}
+
+
+
+    }
+  </script>
+  <style>
+    main {
+      align-items: center;
+    }
+    h1 {
+      font-size: x-large;
+    }
+    body {
+      background-color: rgb(240, 234, 241);
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Registration Page</h1>
+      <form name="register" action="/registered.html" onsubmit="return regex()">
+        <label for="uname">Username:</label><br />
+        <input type="text" id="uname" name="uname" /><br /><br />
+        <label for="mail">User mail_id:</label><br />
+        <input type="text" id="mail" name="mail" /><br /><br />
+        <label for="roll">User Roll:no:</label><br />
+        <input type="string" id="roll" name="roll" /><br /><br />
+        <label for="phone">phone.no:</label><br />
+        <input type="string" id="phone" name="phone" /><br /><br />
+        <label for="password">new password:</label><br />
+        <input type="password" id="password" name="password" /><br /><br />
+        <label for="cpassword">confirm password:</label><br />
+        <input type="password" id="cpassword" name="cpassword" /><br /><br />
+        <input type="submit" value="Register" />
+      </form>
+    </main>
+  </body>
+</html>
